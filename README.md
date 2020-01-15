@@ -1,0 +1,3 @@
+# Rust Playground
+
+I needed a space to put in all my rust experiments, so here it is...
