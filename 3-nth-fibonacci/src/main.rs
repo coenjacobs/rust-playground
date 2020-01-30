@@ -1,3 +1,5 @@
+#[macro_use] extern crate cached;
+
 use std::io;
 
 fn main() {
@@ -15,11 +17,14 @@ fn main() {
     println!("{0}: {1}", nth.to_string(), fibon.to_string());
 }
 
-fn calc_fibon(nth :u64) -> u64 {
-    match nth {
-        0 => 0,
-        1 => 1,
-        2 => 1,
-        _ => calc_fibon(nth - 1) + calc_fibon(nth - 2),
-     }
+cached!{
+    FIBON;
+    fn calc_fibon(nth :u64) -> u64 = {
+        match nth {
+            0 => 0,
+            1 => 1,
+            2 => 1,
+            _ => calc_fibon(nth - 1) + calc_fibon(nth - 2),
+         }
+    }
 }
